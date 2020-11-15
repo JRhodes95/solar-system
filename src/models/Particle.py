@@ -1,4 +1,5 @@
 import numpy as np
+from ..functions.update_velocity import update_velocity
 
 
 class Particle:
@@ -24,5 +25,6 @@ class Particle:
     def update(self, delta_t):
         next_position = self.position + self.velocity * delta_t
         self.position = next_position
-        next_velocity = self.velocity + self.acceleration * delta_t
+        next_velocity = update_velocity(
+            self.velocity, self.acceleration, delta_t)
         self.velocity = next_velocity
